@@ -5,6 +5,8 @@ import { Draggable,Droppable } from 'react-beautiful-dnd';
 
 import Card from './Card';
 
+import '../styles/list.css'
+
 import { Cards, Lists } from '../api';
 
 class List extends Component {

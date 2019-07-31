@@ -1,8 +1,9 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import RelativeDate from 'relative_date';
 import TextArea from 'react-autosize-textarea';
 
-import {Cards} from '../api';
+import '../styles/card.css';
+import { Cards } from '../api';
 
 export default class Card extends React.PureComponent{
     state = {
@@ -23,22 +24,23 @@ export default class Card extends React.PureComponent{
     };
 
     handleKeyDown = e  =>{
-        if(e.key === "Enter"){
+        if(e.key === 'Enter'){
             e.preventDefault();
         }
 
     };
 
     handleKeyUp = e => {
-        const {_id} = this.props;
-        const body = this.input.value.trim()
+        const { _id } = this.props;
+        const body = this.input.value.trim();
 
-        if( e.key === 'Enter' && body ){
-            Cards.update({_id},{$set: {body}})//findById + PUT
-            this.toggleEditing(false());
+        if (e.key === 'Enter' && body ){
+            Cards.update( { _id } , { $set : { body } })//findById + PUT
+            this.toggleEditing(false)();
         }
-        if( e.key === 'Escape'){
-            this.toggleEditing(false());;
+        
+        if (e.key === 'Escape'){
+            this.toggleEditing(false)();;
         }
     };
 
@@ -47,8 +49,8 @@ export default class Card extends React.PureComponent{
     };
 
     handleDeleteCard = () => {
-        const {_id} = this.props;
-        Cards.remove({_id});//findById + DELETE
+        const { _id } = this.props;
+        Cards.remove({ _id });//findById + DELETE
     };
     
     render(){
