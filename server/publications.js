@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
-import { Buckets, Cards } from '../imports/api';
+import { Lists, Cards } from '../imports/api';
 
-Meteor.publish('buckets', () => {
-    return Buckets.find({});
+Meteor.publish('lists', () => {
+    return Lists.find({});
 });
-Meteor.publish('cards', bucketId => Cards.find({ bucketId }));
+Meteor.publish('cards', listId => Cards.find({ listId }));
