@@ -1,8 +1,9 @@
-import {Meteor} from 'meteor/meteor';
-import {Mongo} from 'meteor/mongo';
+import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 
 export const Lists = new Mongo.Collection("lists");
 export const Cards = new Mongo.Collection("cards");
+export const Users = new Mongo.Collection("users");
 
 Meteor.methods({
     updateMultipleCards(
@@ -14,7 +15,7 @@ Meteor.methods({
             { listId: destinationListId },
             { sort: { seq: 1 } }
         ).fetch();
-        const seq = cards[endIndex] ? cards[endIndex].seq : 0;
+        const seq = cards[ endIndex ] ? cards[ endIndex ].seq : 0;
 
         if (startIndex === endIndex && sourceListId === destinationListId) {
             return;

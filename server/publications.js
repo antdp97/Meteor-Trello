@@ -6,3 +6,6 @@ Meteor.publish('lists', () => {
     return Lists.find({});
 });
 Meteor.publish('cards', listId => Cards.find({ listId }));
+
+//Meteor.publish('users',userId => Users.find({userId}));
+
