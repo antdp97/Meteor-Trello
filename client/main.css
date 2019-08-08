@@ -58,3 +58,16 @@ footer {
     padding: 5px 10px;
     line-height: normal;
 }
+
+.form-container{
+    background-color:white;
+    padding:50px;
+}
+
+label{
+    text-align:right;
+}
+
+.form-container h2{
+    text-align:center;
+}

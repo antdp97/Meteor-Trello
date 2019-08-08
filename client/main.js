@@ -11,8 +11,7 @@ import { mount } from 'react-mounter';
 import AppContainer from '../imports/ui/App';
 import TodoList from '../imports/ui/TodoList';
 import Admin from '../imports/ui/administrator/Administrator';
-import Login from '../imports/ui/login/Login';
-import Register from '../imports/ui/login/Register';
+import CreateUser from '../imports/ui/administrator/createUser';
 //Main Page
 FlowRouter.route('/tasks',{
     name: 'tasks',
@@ -27,7 +26,7 @@ FlowRouter.route('/users',{
     name: 'Users-list',
     action(){
         mount(AppContainer,{
-            main: <Admin/>
+            main: <Admin/>,
         })
     }
 })
@@ -41,15 +40,15 @@ FlowRouter.route('/users',{
 //     }
 // })
 
-// //Register
-// FlowRouter.route('/register',{
-//     name: 'register',
-//     action(){
-//         mount(AppContainer,{
-//             main: <Register/>
-//         })
-//     }
-// })
+//Register
+FlowRouter.route('/create',{
+    name: 'create',
+    action(){
+        mount(AppContainer,{
+            main: <CreateUser/>,
+        })
+    }
+})
 
 
 

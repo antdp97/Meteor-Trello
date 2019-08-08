@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import '../styles/app.css';
 
 const App = (props) => (
                 <div className="app-container">

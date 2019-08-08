@@ -1,0 +1,11 @@
+.user-info .fa {
+    cursor: pointer;
+};
+
+.user-info .fa:hover {
+    color: #333;
+}
+
+table{
+    background-color:#d4d3eb;
+}

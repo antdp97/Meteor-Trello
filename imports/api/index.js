@@ -3,7 +3,6 @@ import { Mongo } from 'meteor/mongo';
 
 export const Lists = new Mongo.Collection("lists");
 export const Cards = new Mongo.Collection("cards");
-export const Users = new Mongo.Collection("users");
 
 Meteor.methods({
     updateMultipleCards(

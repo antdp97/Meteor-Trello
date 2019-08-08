@@ -7,5 +7,9 @@ Meteor.publish('lists', () => {
 });
 Meteor.publish('cards', listId => Cards.find({ listId }));
 
+Meteor.publish('myUsers', () => {
+    return Meteor.users.find({}); //cursor
+});
+
 //Meteor.publish('users',userId => Users.find({userId}));
 
