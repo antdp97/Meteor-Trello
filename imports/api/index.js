@@ -46,8 +46,10 @@ Meteor.methods({
         Lists.remove({ _id: listId });
         Cards.remove({ listId });
     },
-    
+
     assignUser(userId,cardId){
+        //Check if The card has been assigned or not ?
+        
         Cards.update(
             { _id : cardId },
             { $set: {responsible:userId} },

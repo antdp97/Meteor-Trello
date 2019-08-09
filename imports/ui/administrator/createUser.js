@@ -29,14 +29,16 @@ export default class createUser extends Component{
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('submitted');
-        //console.log("You submitted data : " + this.state.email +", "+ this.state.password +", "+ this.state.username) 
+        console.log("You submitted data : " + this.state.email +", "+ this.state.password +", "+ this.state.username + " " + this.state.firstName + " " + this.state.lastName)  
         Accounts.createUser({
             email: this.state.email,
             username:this.state.username,
             password:this.state.password,
-            firstName:this.state.firstName,
-            lastName:this.state.lastName
-
+            profile:{
+                firstName:this.state.firstName,
+                lastName:this.state.lastName
+            }
+            
         })
     }
 

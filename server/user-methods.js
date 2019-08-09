@@ -13,7 +13,14 @@ Meteor.methods({
         // console.log(userLastName);
         Meteor.users.update(
             { _id:userid },
-            { $set :{firstName:userFirstName,lastName:userLastName}},
+            { $set :
+                {
+                profile:{
+                    firstName:userFirstName,
+                    lastName:userLastName
+                }
+                }
+            }
         );
     }
 

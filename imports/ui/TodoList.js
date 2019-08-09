@@ -7,7 +7,7 @@ import List from './List.js';
 
 import { Lists } from '../api';
 
-class App extends Component {
+class TodoList extends Component {
     addList = () => {
         const { lists } = this.props;
 
@@ -65,11 +65,14 @@ class App extends Component {
 }
 
 export default withTracker(() => {
+    //console.log(Meteor.users.find());    
     const handle = Meteor.subscribe('lists');
     return {
+        
         lists: Lists.find({}, { sort: { createdAt: 1 } }).fetch(),
-        isLoading: !handle.ready()
+        isLoading: (!handle.ready() )
     };
-})(App);
+    
+})(TodoList);
 
 
