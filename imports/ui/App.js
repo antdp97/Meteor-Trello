@@ -1,7 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
+import AccountsUIWrapper from './AccountsUIWrapper.js';
+
+
 import '../styles/app.css';
+import { Button } from 'react-bootstrap';
+import { createContainer } from 'meteor/react-meteor-data';
+
 
 const App = (props) => (
                 <div className="app-container">
@@ -13,16 +18,21 @@ const App = (props) => (
                             />{' '}
                             Simple Meteor Trello
                         </h1>
-                        <h4>
-                            <a href="http://localhost:3000/users">
-                                Users List
-                            </a>
-                        </h4>
-                        <h4>
-                            <a href="http://localhost:3000/tasks"> 
-                                Tasks List
-                            </a>
-                        </h4>
+                        <AccountsUIWrapper />
+                        <Button>
+                            <h4>
+                                <a href="http://localhost:3000/users">
+                                    Users List
+                                </a>
+                            </h4>
+                        </Button>
+                        <Button>
+                            <h4>
+                                <a href="http://localhost:3000/tasks"> 
+                                    Tasks List
+                                </a>
+                            </h4>
+                        </Button>
                     </header>
                     {/* <TodoList/> */}
                     <div>

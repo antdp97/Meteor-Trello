@@ -45,5 +45,12 @@ Meteor.methods({
     deleteListAndAllCards(listId) {
         Lists.remove({ _id: listId });
         Cards.remove({ listId });
+    },
+    
+    assignUser(userId,cardId){
+        Cards.update(
+            { _id : cardId },
+            { $set: {responsible:userId} },
+        )
     }
 });

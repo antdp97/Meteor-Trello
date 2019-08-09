@@ -6,6 +6,14 @@
     color: #333;
 }
 
-table{
-    background-color:#d4d3eb;
+a{
+    text-decoration: none;
+    color:white;
+    text-align:right;
+}
+
+Button a{
+    text-decoration: none;
+    color:white;
+    text-align:right;
 }

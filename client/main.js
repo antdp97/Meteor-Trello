@@ -12,7 +12,10 @@ import AppContainer from '../imports/ui/App';
 import TodoList from '../imports/ui/TodoList';
 import Admin from '../imports/ui/administrator/Administrator';
 import CreateUser from '../imports/ui/administrator/createUser';
-//Main Page
+import UserProfile from '../imports/ui/administrator/UserProfile';
+import EditProfile from '../imports/ui/administrator/EditProfile';
+
+//Main Page - TASK MANAGER
 FlowRouter.route('/tasks',{
     name: 'tasks',
     action(){
@@ -21,7 +24,8 @@ FlowRouter.route('/tasks',{
         })
     }
 })
-//User
+
+//Users List
 FlowRouter.route('/users',{
     name: 'Users-list',
     action(){
@@ -30,6 +34,27 @@ FlowRouter.route('/users',{
         })
     }
 })
+
+//User Information
+FlowRouter.route('/users/:username/:email/:firstName/:lastName',{
+    name: 'User-info',
+    action(){
+        mount(AppContainer,{
+            main: <UserProfile/>,
+        })
+    }
+})
+
+//EDIT PROFILE
+FlowRouter.route('/edit/:id/:firstName/:lastName',{
+    name:'Edit-User',
+    action(){
+        mount(AppContainer,{
+            main: <EditProfile/>,
+        })
+    }
+})
+
 // //Login
 // FlowRouter.route('/login',{
 //     name: 'login',
@@ -40,7 +65,7 @@ FlowRouter.route('/users',{
 //     }
 // })
 
-//Register
+//CREATE USER
 FlowRouter.route('/create',{
     name: 'create',
     action(){

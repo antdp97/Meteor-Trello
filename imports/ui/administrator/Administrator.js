@@ -1,9 +1,10 @@
 import React , { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Table } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import UserRow from './User.js';
-import { Users } from '../../api/'; 
 import '../../styles/user.css';
 
 class Admin extends Component{
@@ -11,8 +12,8 @@ class Admin extends Component{
 
     renderUsers(){
         //console.log(this.props.users);
-        return this.props.users.map((user) => (
-            <UserRow key={user._id} data_key={user._id} user={user}/>
+        return this.props.users.map((user,index) => (
+            <UserRow key={index} user={user}/>
         ));
         
     };
@@ -21,22 +22,22 @@ class Admin extends Component{
         return(
             <div className="users-container">
                 <h5>
-                    <a href="http://localhost:3000/create" className="btn btn-primary">
-                        Create User                            
-                    </a>
+                    <Button>
+                        <a href="http://localhost:3000/create">Create User</a>
+                    </Button>
                 </h5>
                 <div className="users-table">
-                <table>
+                <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
                             <th>UserName</th>
-                            <th>ID</th>
+                            {/* <th>ID</th> */}
                         </tr>
                     </thead>
                     <tbody>
                         {this.renderUsers()}    
                     </tbody>
-                </table>
+                </Table>
                 </div>
             </div>
         );

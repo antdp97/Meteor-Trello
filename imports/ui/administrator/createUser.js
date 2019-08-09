@@ -1,6 +1,7 @@
 import React , { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Button } from 'react-bootstrap';
 //import '../../api/user-methods';
 
 export default class createUser extends Component{
@@ -9,7 +10,10 @@ export default class createUser extends Component{
         this.state={
             username:'',
             email :'',
-            password:''
+            password:'',
+            firstName:'',
+            lastName:'',
+                        
         }
         
     };
@@ -29,8 +33,10 @@ export default class createUser extends Component{
         Accounts.createUser({
             email: this.state.email,
             username:this.state.username,
-            password:this.state.password
-            
+            password:this.state.password,
+            firstName:this.state.firstName,
+            lastName:this.state.lastName
+
         })
     }
 
@@ -55,6 +61,21 @@ export default class createUser extends Component{
                         </div>
                     </div>
 
+                    {/* Email */}
+                    <div className="form-group row">
+                        <label htmlFor="email" className="col-4 col-form-label">Email:</label>
+                        <div className="col">
+                            <input 
+                            type="email" 
+                            name="email" 
+                            value={this.state.email}
+                            onChange={this.handleChange} 
+                            className="form-control" 
+                            placeholder="Enter your email:"
+                            />
+                        </div>
+                    </div>
+
                     {/* Password */}
                     <div className="form-group row">
                         <label htmlFor="password" className="col-4 col-form-label">Password(8 characters minimum):</label>
@@ -72,33 +93,32 @@ export default class createUser extends Component{
                         </div>
                     </div>
 
-                    {/* Email */}
-                    <div className="form-group row">
-                        <label htmlFor="email" className="col-4 col-form-label">Email:</label>
-                        <div className="col">
-                            <input 
-                            type="email" 
-                            name="email" 
-                            value={this.state.email}
-                            onChange={this.handleChange} 
-                            className="form-control" 
-                            placeholder="Enter your email:"
-                            />
-                        </div>
-                    </div>
+                    
 
                     {/* ----------------- Profile  ----------------- */}
 
-                    {/* <hr />
+                    <hr />
                     <h2> Profile </h2>
                         <div className="form-row">
                             <div className="col">
-                                <input type="text" name="firstName" className="form-control" placeholder="Enter your first name:"/>                        
+                                <input 
+                                type="text" 
+                                name="firstName" 
+                                value={this.state.firstName}
+                                onChange={this.handleChange} 
+                                className="form-control" 
+                                placeholder="Enter your first name:"/>                        
                             </div>
                             <div className="col">
-                                <input type="text" name="lastName" className="form-control" placeholder="Enter your last name:"/>
+                                <input 
+                                type="text" 
+                                name="lastName" 
+                                value={this.state.lastName}
+                                onChange={this.handleChange} 
+                                className="form-control" 
+                                placeholder="Enter your last name:"/>
                             </div>
-                        </div> */}
+                        </div>
                         
                         {/* Gender */}
                         {/* <div className="form-check">
@@ -125,12 +145,13 @@ export default class createUser extends Component{
                     {/* Create Button */}
                     <div className="form-group row">
                         <div className="col-sm-10">
-                            <button
+                            <Button
+                                
                                 type="button" 
                                 className="btn btn-primary"
                                 onClick={this.handleSubmit}
                                 >Create
-                            </button>
+                            </Button>
                         </div>
                     </div>
 
