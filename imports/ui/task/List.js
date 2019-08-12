@@ -5,16 +5,17 @@ import { Draggable,Droppable } from 'react-beautiful-dnd';
 
 import Card from './Card';
 
-import '../styles/list.css'
+import '../../styles/list.css'
 
-import { Cards, Lists } from '../api';
+import { Cards, Lists } from '../../api';
 
 class List extends Component {
+    
     state = {
         cardAdd: false,
         titleEdit: false
     };
-
+    
     addCard = () => {
         const { _id, cards } = this.props;
         const body = this.input.value.trim();

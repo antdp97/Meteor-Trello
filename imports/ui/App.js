@@ -28,7 +28,7 @@ const App = (props) => (
                         </Button>
                         <Button>
                             <h4>
-                                <a href="http://localhost:3000/tasks"> 
+                                <a href="http://localhost:3000/"> 
                                     Tasks List
                                 </a>
                             </h4>

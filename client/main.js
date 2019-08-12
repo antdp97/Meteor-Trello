@@ -2,21 +2,19 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 import './main.html'
-// import App from '../imports/ui/App.js';
-
 
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { mount } from 'react-mounter';
 
 import AppContainer from '../imports/ui/App';
-import TodoList from '../imports/ui/TodoList';
+import TodoList from '../imports/ui/task/TodoList';
 import Admin from '../imports/ui/administrator/Administrator';
 import CreateUser from '../imports/ui/administrator/createUser';
 import UserProfile from '../imports/ui/administrator/UserProfile';
 import EditProfile from '../imports/ui/administrator/EditProfile';
 
 //Main Page - TASK MANAGER
-FlowRouter.route('/tasks',{
+FlowRouter.route('/',{
     name: 'tasks',
     action(){
         mount(AppContainer,{

@@ -3,6 +3,10 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+const styleBtn = {
+    marginTop: '10px',
+}
+
 export default class EditProfile extends React.Component{
     constructor(props){
         super(props);
@@ -13,6 +17,8 @@ export default class EditProfile extends React.Component{
         };
     };
 
+
+    //When user types in the Input box,system will record the input.
     handleChange = (event) => {
 
         this.setState({
@@ -21,16 +27,12 @@ export default class EditProfile extends React.Component{
         
     };
 
+    //When Click the Update button the system will call for the updateUser api to update user in mongoDB
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('submitted');
-        console.log(this.state.firstName);
-        console.log(this.state.lastName);
         //console.log("You submitted data : " + this.state.email +", "+ this.state.password +", "+ this.state.username) 
-        //Update Instead of Create new
+        //Call for the Update function
         Meteor.call('updateUser',this.state.id,this.state.firstName,this.state.lastName,(e,result) =>{
-            // console.log(e);
-            // console.log(result);
             if(!e){
               console.log('Update Success');
             }
@@ -41,47 +43,46 @@ export default class EditProfile extends React.Component{
 
 
     render(){
-        // console.log(FlowRouter.getParam('firstName'));
-        // console.log(FlowRouter.getParam('lastName'))
         return(
             <div className="form-container">
                 <form>
                     {/* ----------------- Profile  ----------------- */}
 
                     <h2> Profile </h2>
-                        <div className="form-row">
-                            <div className="col">
-                                <input type="text" 
-                                name="firstName" 
-                                className="form-control"
-                                value={this.state.firstName}
-                                placeholder="Change your first name:"
-                                onChange={this.handleChange} 
-                                />                        
+                            <div className="form-group row">
+                                <label className="col-4 col-form-label">First Name:</label>
+                                <div className="col">
+                                    <input 
+                                        type="text" 
+                                        name="firstName" 
+                                        className="form-control"
+                                        value={this.state.firstName}
+                                        placeholder="Change your first name:"
+                                        onChange={this.handleChange} 
+                                    />   
+                                </div>
                             </div>
-                            <div className="col">
-                                <input type="text" 
-                                name="lastName"
-                                className="form-control" 
-                                value={this.state.lastName}
-                                placeholder="Change your last name:"
-                                onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        
-                    {/* Edit Button */}
-                    <div className="form-group row">
-                        <div className="col-sm-10">
+                            <div className="form-group row">
+                                <label className="col-4 col-form-label">Last Name:</label>
+                                <div className="col">
+                                    <input 
+                                        type="text" 
+                                        name="lastName" 
+                                        className="form-control"
+                                        value={this.state.lastName}
+                                        placeholder="Change your last name:"
+                                        onChange={this.handleChange} 
+                                    />   
+                                </div>
+                            </div>                        
+                            {/* Edit Button */}
                             <button
+                                style={styleBtn}
                                 type="button" 
                                 className="btn btn-primary"
                                 onClick={this.handleSubmit}
-                                >Update
+                            >Update
                             </button>
-                        </div>
-                    </div>
-
                 </form>
                 
             </div>

@@ -6,7 +6,6 @@ Meteor.methods({
         //console.log(userId);
         Meteor.users.remove( {_id : userId} );
     },
-
     updateUser(userid,userFirstName,userLastName){
         // console.log(userid);
         // console.log(userFirstName);

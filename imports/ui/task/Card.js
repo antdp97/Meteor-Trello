@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import RelativeDate from 'relative_date';
 import TextArea from 'react-autosize-textarea';
 // import { withTracker } from 'meteor/react-meteor-data';
-import '../styles/card.css';
-import { Cards } from '../api';
+import '../../styles/card.css';
+import { Cards } from '../../api';
+
+const stylex = {};
 
 export default class Card extends React.PureComponent{
     state = {
@@ -67,6 +69,7 @@ export default class Card extends React.PureComponent{
                 <div className="card-data" onClick={this.toggleEditing(true)}>
                     {editing && (
                         <TextArea 
+                            style={stylex}
                             placeholder="Enter title for this Card"
                             innerRef={this.handleInputRef}
                             onKeyUp={this.handleKeyUp}

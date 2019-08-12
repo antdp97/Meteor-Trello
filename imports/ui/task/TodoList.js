@@ -4,8 +4,13 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { DragDropContext } from 'react-beautiful-dnd';//Beautiful Drag and Drop npm package
 
 import List from './List.js';
+import { Lists } from '../../api';
 
-import { Lists } from '../api';
+var styleBtn={
+        padding: '5px 10px',
+        lineHeight: 'normal',
+    };
+    
 
 class TodoList extends Component {
     addList = () => {
@@ -17,6 +22,7 @@ class TodoList extends Component {
         });
     };
 
+    //Render the LIST Component
     renderLists = () => {
         const { lists } = this.props;
 
@@ -29,6 +35,7 @@ class TodoList extends Component {
         ));
     };
 
+    //Drop Card
     onDragEnd = ({ draggableId: cardId, source, destination, reason }) => {
         if (reason === 'DROP') {
             Meteor.call('updateMultipleCards', cardId, source, destination);
@@ -39,27 +46,25 @@ class TodoList extends Component {
         const { isLoading } = this.props;
 
         return (    
-            <DragDropContext onDragEnd={this.onDragEnd}>
+            <div className="wrapper">
+                <button className="btn btn-info" style={styleBtn} onClick={this.addList}>
+                    <i className="fa fa-plus" />
+                </button>
+                <DragDropContext onDragEnd={this.onDragEnd}>
                     <div className="list-container">
-                    {/* Add Button */}
-                    {!isLoading && (
-                            <button
-                                className="btn btn-info"
-                                onClick={this.addList}
-                            >
-                                <i className="fa fa-plus" /> Add List
-                            </button>
-                        )}
+                        {/* Add Button */}
+                        {/* Render List */}
                         {!isLoading && this.renderLists()}
+                            
                         {isLoading && (
                             <div className="lists-loading">
                                 <i className="fa fa-circle-o-notch fa-spin" />
                             </div>
                         )}
                     </div>
-                
-            </DragDropContext>
-            
+                    
+                </DragDropContext>
+            </div>
         );
     }
 }
